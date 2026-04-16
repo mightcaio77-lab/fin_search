@@ -68,3 +68,31 @@ ou
 
 $ mvn spring-boot:run 
 ```
+
+## Mensagem de despertar no celular
+
+O projeto agora suporta envio de mensagem de despertar via Twilio, por agendamento.
+
+Defina as variáveis de ambiente antes de subir a aplicação:
+
+```bash
+export WAKEUP_MESSAGE_ENABLED=true
+export WAKEUP_MESSAGE_TO=+5521976100589
+export WAKEUP_MESSAGE_FROM=+1SEU_NUMERO_TWILIO
+export WAKEUP_MESSAGE_BODY="Bom dia! Hora de acordar!"
+export WAKEUP_MESSAGE_CRON="0 0 7 * * *"
+export WAKEUP_MESSAGE_ZONE="America/Sao_Paulo"
+export TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export TWILIO_AUTH_TOKEN=seu_token_twilio
+```
+
+Depois execute:
+
+```bash
+mvn spring-boot:run
+```
+
+Observações:
+- O envio ocorre apenas quando `WAKEUP_MESSAGE_ENABLED=true`.
+- O número padrão de destino está configurado como `+5521976100589`.
+- O `cron` usa 6 campos (segundo minuto hora dia mês dia-da-semana).

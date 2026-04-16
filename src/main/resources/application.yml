@@ -25,3 +25,14 @@ management:
           - env
           - threaddump
           - metrics
+
+wakeup-message:
+  enabled: ${WAKEUP_MESSAGE_ENABLED:false}
+  cron: ${WAKEUP_MESSAGE_CRON:0 0 7 * * *}
+  zone: ${WAKEUP_MESSAGE_ZONE:America/Sao_Paulo}
+  to: ${WAKEUP_MESSAGE_TO:+5521976100589}
+  from: ${WAKEUP_MESSAGE_FROM:}
+  body: ${WAKEUP_MESSAGE_BODY:Bom dia! Hora de acordar!}
+  twilio:
+    account-sid: ${TWILIO_ACCOUNT_SID:}
+    auth-token: ${TWILIO_AUTH_TOKEN:}
