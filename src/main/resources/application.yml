@@ -8,6 +8,19 @@ spring:
     property-naming-strategy: SNAKE_CASE
     default-property-inclusion: NON_NULL
 
+wake:
+  message:
+    enabled: ${WAKE_MESSAGE_ENABLED:true}
+    recipient: ${WAKE_MESSAGE_RECIPIENT:+5521976100589}
+    text: ${WAKE_MESSAGE_TEXT:Bom dia! Hora de acordar.}
+    cron: ${WAKE_MESSAGE_CRON:0 0 7 * * *}
+    zone: ${WAKE_MESSAGE_ZONE:America/Sao_Paulo}
+    twilio:
+      account-sid: ${TWILIO_ACCOUNT_SID:}
+      auth-token: ${TWILIO_AUTH_TOKEN:}
+      from-number: ${TWILIO_FROM_NUMBER:}
+      use-whatsapp: ${TWILIO_USE_WHATSAPP:false}
+
 management:
   security:
     enabled: false

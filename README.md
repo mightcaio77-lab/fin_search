@@ -68,3 +68,35 @@ ou
 
 $ mvn spring-boot:run 
 ```
+
+## Mensagem de despertar por celular
+
+O projeto inclui um agendamento para enviar mensagem de despertar para celular usando a API da Twilio.
+
+Por padrão, o destinatário está definido como:
+
+`+5521976100589`
+
+Variáveis de ambiente disponíveis:
+
+- `WAKE_MESSAGE_ENABLED` (default `true`)
+- `WAKE_MESSAGE_RECIPIENT` (default `+5521976100589`)
+- `WAKE_MESSAGE_TEXT` (default `Bom dia! Hora de acordar.`)
+- `WAKE_MESSAGE_CRON` (default `0 0 7 * * *`)
+- `WAKE_MESSAGE_ZONE` (default `America/Sao_Paulo`)
+- `TWILIO_ACCOUNT_SID`
+- `TWILIO_AUTH_TOKEN`
+- `TWILIO_FROM_NUMBER`
+- `TWILIO_USE_WHATSAPP` (`true` para enviar via WhatsApp da Twilio)
+
+Exemplo:
+
+```
+export TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export TWILIO_AUTH_TOKEN=your_auth_token
+export TWILIO_FROM_NUMBER=+1XXXXXXXXXX
+export WAKE_MESSAGE_RECIPIENT=+5521976100589
+export WAKE_MESSAGE_TEXT="Acorda! Bom dia :)"
+```
+
+Quando as credenciais não estão definidas, o job roda e registra aviso no log sem enviar a mensagem.
